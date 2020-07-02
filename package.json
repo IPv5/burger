@@ -1,0 +1,19 @@
+{
+  "name": "burger",
+  "version": "1.0.0",
+  "description": "Burger full website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IPv5/burger.git"
+  },
+  "author": "IPv5",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IPv5/burger/issues"
+  },
+  "homepage": "https://github.com/IPv5/burger#readme"
+}
