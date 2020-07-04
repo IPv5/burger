@@ -1,24 +1,29 @@
-// Dependencies
-// =============================================================
+// Import the ORM to create functions that will interact with the database.
+var orm = require("../config/orm.js");
 
-// This may be confusing but here Sequelize (capital) references the standard library
-var Sequelize = require("sequelize");
-// sequelize (lowercase) references our connection to the DB.
-var sequelize = require("../config/connection.js");
-
-// Creates a "Chirp" model that matches up with DB
-var Burger = sequelize.define("burger", {
-    id: {
-        type: Sequelize.INTEGER,
-        autoIncrement: true,
-        primaryKey: true
+var cat = {
+    all: function(cb) {
+        orm.all("cats", function(res) {
+            cb(res);
+        });
     },
-    burger_name: Sequelize.STRING,
-    devoured: Sequelize.BOOLEAN
-});
+    // The variables cols and vals are arrays.
+    create: function(cols, vals, cb) {
+        orm.create("cats", cols, vals, function(res) {
+            cb(res);
+        });
+    },
+    update: function(objColVals, condition, cb) {
+        orm.update("cats", objColVals, condition, function(res) {
+            cb(res);
+        });
+    },
+    delete: function(condition, cb) {
+        orm.delete("cats", condition, function(res) {
+            cb(res);
+        });
+    }
+};
 
-// Syncs with DB
-Burger.sync();
-
-// Makes the Chirp Model available for other files (will also create a table)
-module.exports = Burger;
+// Export the database functions for the controller (catsController.js).
+module.exports = cat;
